@@ -1,0 +1,14 @@
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - run: docker build -t frontend -f ./Dockerfile .
+      - run: docker rm -f frontend-container || true # Remove the existing container if it exists
+      - run: docker run --name frontend-container -d -p 80:80 frontend:latest # Run the new container using the built image

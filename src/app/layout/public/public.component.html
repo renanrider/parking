@@ -1,0 +1,33 @@
+<div class="flex lg:flex-wrap h-screen font-poppins font-normal">
+  <!-- Left column container-->
+  <div
+    class="flex items-center justify-center p-3 w-full lg:w-1/2 h-full min-h-full"
+  >
+    <div class="w-96">
+      <!--Logo-->
+      <div class="text-center">
+        <img
+          class="mx-auto w-52"
+          ngSrc="assets/logo.webp"
+          alt="logo"
+          width="208"
+          height="50"
+        />
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right column container with background and description-->
+  <div
+    class="hidden lg:flex items-center lg:w-1/2 lg:rounded-r-lg lg:rounded-bl-none bg-gradient-to-tr from-blue-500 to-blue-800"
+  >
+    <div class="flex items-center justify-center">
+      <img
+        class="w-full lg:w-1/2"
+        src="assets/parking-lot.png"
+        alt="parking lot"
+      />
+    </div>
+  </div>
+</div>

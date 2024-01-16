@@ -1,0 +1,23 @@
+<div class="container mb-2">
+  <div class="flex flex-row">
+    @if (enableBackButtom) {
+<button
+     
+      (click)="back()"
+      data-testid="button-backButton"
+      class="hidden sm:block"
+    >
+      <i class="fa-solid fa-arrow-left text-slate-500 text-xl" ></i>
+    </button>
+}
+    <h1
+      [ngClass]="enableBackButtom ? 'ml-2' : ''"
+      class="my-0 text-xl leading-snug font-bold text-slate-700"
+    >
+      {{ title }}
+    </h1>
+  </div>
+  <p class="hidden sm:flex text-base leading-snug font-normal text-slate-600">
+    {{ description }}
+  </p>
+</div>

@@ -1,0 +1,26 @@
+<nav class="flex fixed w-full z-20 top-0 left-0 bg-blue-600">
+  <div class="justify-between w-full flex flex-wrap items-center p-3">
+    <div class="flex flex-row">
+      @if (enableBackButtom) {
+      <button (click)="back()" class="w-10 h-10">
+        <i class="fa-solid fa-arrow-left text-white text-xl"></i>
+      </button>
+      }
+      <a
+        href="#"
+        class="flex items-center self-center text-xl font-semibold whitespace-nowrap text-white"
+      >
+        <img ngSrc="assets/logo.webp" width="120" height="120" alt="logo" />
+      </a>
+    </div>
+
+    <button
+      (click)="toggleBottomSheetCollapse()"
+      type="button"
+      class="inline-flex items-center w-10 h-10 justify-center text-sm text-white"
+    >
+      <span class="sr-only">Open main menu</span>
+      <i class="text-white text-xl fa-solid fa-bars"></i>
+    </button>
+  </div>
+</nav>

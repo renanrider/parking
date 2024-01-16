@@ -1,0 +1,16 @@
+<div
+  [style.border-color]="backgroundColor"
+  class="flex flex-col sm:flex-row lg:inline-flex items-center justify-start p-3 rounded-md shadow-none overflow-hidden font-medium group border border-solid border-b-4 h-full w-full"
+>
+  <div class="flex items-center">
+    <div
+      [style.border-color]="backgroundColor"
+      class="flex justify-center items-center w-14 h-14 border rounded-full"
+    >
+      <h2 class="text-2xl font-bold text-slate-600">{{ stats }}</h2>
+    </div>
+  </div>
+  <h3 class="text-base text-center lg:text-left ml-2 text-slate-500">
+    {{ title }}
+  </h3>
+</div>

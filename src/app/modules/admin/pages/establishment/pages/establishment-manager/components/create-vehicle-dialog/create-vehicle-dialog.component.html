@@ -1,0 +1,119 @@
+<h1 mat-dialog-title>{{ dialogTitle }}</h1>
+<form [formGroup]="vehicleCreateForm" (ngSubmit)="onSubmit()">
+  <div mat-dialog-content>
+    <div class="flex flex-col">
+      <div id="input" class="flex flex-col w-full my-2">
+        <label for="brand" class="text-gray-500 mb-2">Marca</label>
+        <input
+          formControlName="brand"
+          type="text"
+          id="brand"
+          name="brand"
+          placeholder="Ex. Can move throught the wheels"
+          class="appearance-none border-2 border-gray-100 rounded-md px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
+        />
+
+        @if (vehicleCreateForm.controls.brand.errors) { @if (
+        vehicleCreateForm.controls.brand.errors['required'] &&
+        vehicleCreateForm.controls.brand.dirty ) {
+        <p class="text-red-500">
+          {{ dialogTitle }}
+        </p>
+        } }
+      </div>
+
+      <div id="input" class="flex flex-col w-full my-2">
+        <label for="model" class="text-gray-500 mb-2">Modelo</label>
+        <input
+          formControlName="model"
+          type="text"
+          id="model"
+          name="model"
+          placeholder="Ex. Reunião de Negócios"
+          class="appearance-none border-2 border-gray-100 rounded-md px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
+        />
+        @if ( vehicleCreateForm.controls.model.errors &&
+        vehicleCreateForm.controls.model.dirty ) { @if (
+        vehicleCreateForm.controls.model.errors['required'] ) {
+        <p class="text-red-500">Descrição</p>
+        } }
+      </div>
+
+      <div id="input" class="flex flex-col w-full my-2">
+        <label for="color" class="text-gray-500 mb-2">Cor</label>
+        <input
+          formControlName="color"
+          type="text"
+          id="color"
+          name="color"
+          placeholder="Ex. amarelo"
+          class="appearance-none border-2 border-gray-100 rounded-md px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
+        />
+        @if ( vehicleCreateForm.controls.color.errors &&
+        vehicleCreateForm.controls.color.dirty ) { @if (
+        vehicleCreateForm.controls.color.errors['required'] ) {
+        <p class="text-red-500">Cor</p>
+        } }
+      </div>
+
+      <div id="input" class="flex flex-col w-full my-2">
+        <label for="type" class="text-gray-500 mb-2">Tipo</label>
+        <input
+          formControlName="type"
+          type="text"
+          id="type"
+          name="type"
+          placeholder="Ex. Carro"
+          class="appearance-none border-2 border-gray-100 rounded-md px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
+        />
+        @if ( vehicleCreateForm.controls.type.errors &&
+        vehicleCreateForm.controls.type.dirty ) { @if (
+        vehicleCreateForm.controls.type.errors['required'] ) {
+        <p class="text-red-500">Tipo</p>
+        } }
+      </div>
+
+      <div id="input" class="flex flex-col w-full my-2">
+        <label for="plate" class="text-gray-500 mb-2">Placa</label>
+        <input
+          formControlName="plate"
+          type="text"
+          id="plate"
+          name="plate"
+          placeholder="Ex. HGD-7789"
+          class="appearance-none border-2 border-gray-100 rounded-md px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
+        />
+        @if ( vehicleCreateForm.controls.plate.errors &&
+        vehicleCreateForm.controls.plate.dirty ) { @if (
+        vehicleCreateForm.controls.plate.errors['required'] ) {
+        <p class="text-red-500">Placa</p>
+        } }
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions align="end">
+    <div class="grid grid-flow-col auto-cols-max">
+      <div>
+        <button
+          type="button"
+          class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-yellow-500 text-white hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+          (click)="onReset()"
+        >
+          Limpar
+        </button>
+      </div>
+      <div>
+        <button
+          [disabled]="vehicleCreateForm.invalid"
+          type="submit"
+          [ngClass]="{
+            'disabled:opacity-75': vehicleCreateForm.invalid
+          }"
+          class="py-3 ml-2 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+        >
+          Salvar
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

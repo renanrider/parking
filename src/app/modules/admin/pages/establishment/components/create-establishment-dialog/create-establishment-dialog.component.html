@@ -1,0 +1,142 @@
+<h1 mat-dialog-title>Adicionar</h1>
+<form [formGroup]="createCardDialogForm" (ngSubmit)="onSubmit()">
+  <div mat-dialog-content>
+    <div class="flex flex-row">
+      <div class="p-3 w-full">
+        <div id="input" class="flex flex-col w-full my-2">
+          <label for="name" class="text-gray-500 mb-2">Nome</label>
+          <input
+            formControlName="name"
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Ex. Empresa 1"
+            class="appearance-none border-2 border-gray-100 rounded-md px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
+          />
+
+          @if (createCardDialogForm.controls.name.errors) { @if (
+          createCardDialogForm.controls.name.errors['required'] &&
+          createCardDialogForm.controls.name.dirty ) {
+          <p class="text-red-500">
+            {{ dialogTitle }}
+          </p>
+          } }
+        </div>
+
+        <div id="input" class="flex flex-col w-full my-2">
+          <label for="cnpj" class="text-gray-500 mb-2">CNPJ</label>
+          <input
+            formControlName="cnpj"
+            type="text"
+            id="cnpj"
+            name="cnpj"
+            placeholder="Ex. 61.022.167/0001-48"
+            class="appearance-none border-2 border-gray-100 rounded-md px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
+          />
+          @if ( createCardDialogForm.controls.cnpj.errors &&
+          createCardDialogForm.controls.cnpj.dirty ) { @if (
+          createCardDialogForm.controls.cnpj.errors['required'] ) {
+          <p class="text-red-500">CNPJ</p>
+          } }
+        </div>
+
+        <div id="input" class="flex flex-col w-full my-2">
+          <label for="address" class="text-gray-500 mb-2">Endereço</label>
+          <input
+            formControlName="address"
+            type="text"
+            id="address"
+            name="address"
+            placeholder="Ex. Av. Paulista. 1001"
+            class="appearance-none border-2 border-gray-100 rounded-md px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
+          />
+          @if ( createCardDialogForm.controls.address.errors &&
+          createCardDialogForm.controls.address.dirty ) { @if (
+          createCardDialogForm.controls.address.errors['required'] ) {
+          <p class="text-red-500">Endereço</p>
+          } }
+        </div>
+
+        <div id="input" class="flex flex-col w-full my-2">
+          <label for="phone" class="text-gray-500 mb-2">Telefone</label>
+          <input
+            formControlName="phone"
+            type="text"
+            id="phone"
+            name="phone"
+            placeholder="Ex. 1199999999"
+            class="appearance-none border-2 border-gray-100 rounded-md px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
+          />
+          @if ( createCardDialogForm.controls.phone.errors &&
+          createCardDialogForm.controls.phone.dirty ) { @if (
+          createCardDialogForm.controls.phone.errors['required'] ) {
+          <p class="text-red-500">Telefone</p>
+          } }
+        </div>
+
+        <div id="input" class="flex flex-col w-full my-2">
+          <label for="amountyCar" class="text-gray-500 mb-2"
+            >Número de vagas para carros</label
+          >
+          <input
+            formControlName="amountyCar"
+            type="number"
+            id="amountyCar"
+            name="amountyCar"
+            placeholder="Ex. 10"
+            class="appearance-none border-2 border-gray-100 rounded-md px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
+          />
+          @if ( createCardDialogForm.controls.amountyCar.errors &&
+          createCardDialogForm.controls.amountyCar.dirty ) { @if (
+          createCardDialogForm.controls.amountyCar.errors['required'] ) {
+          <p class="text-red-500">Número de vagas para carros</p>
+          } }
+        </div>
+
+        <div id="input" class="flex flex-col w-full my-2">
+          <label for="amountyMotorcycle" class="text-gray-500 mb-2"
+            >Número de vagas para motos</label
+          >
+          <input
+            formControlName="amountyMotorcycle"
+            type="number"
+            id="amountyMotorcycle"
+            name="amountyMotorcycle"
+            placeholder="Ex. 10"
+            class="appearance-none border-2 border-gray-100 rounded-md px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
+          />
+          @if ( createCardDialogForm.controls.amountyMotorcycle.errors &&
+          createCardDialogForm.controls.amountyMotorcycle.dirty ) { @if (
+          createCardDialogForm.controls.amountyMotorcycle.errors['required'] ) {
+          <p class="text-red-500">Número de vagas para motos</p>
+          } }
+        </div>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions align="end">
+    <div class="grid grid-flow-col auto-cols-max">
+      <div>
+        <button
+          type="button"
+          class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-yellow-500 text-white hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+          (click)="onReset()"
+        >
+          Limpar
+        </button>
+      </div>
+      <div>
+        <button
+          [disabled]="createCardDialogForm.invalid"
+          type="submit"
+          [ngClass]="{
+            'disabled:opacity-75': createCardDialogForm.invalid
+          }"
+          class="py-3 ml-2 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+        >
+          Salvar
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,17 @@
+@use "@angular/material" as mat;
+
+@include mat.core();
+
+$default-typography: mat.define-typography-config(
+  // Specify "Poppins" as the default font family for all levels
+  $font-family: "Poppins"
+);
+
+// Apply the custom typography to Angular Material components
+@include mat.all-component-themes(
+  mat.define-light-theme(
+    (
+      typography: $default-typography,
+    )
+  )
+);

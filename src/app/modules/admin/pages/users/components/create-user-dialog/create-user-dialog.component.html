@@ -1,0 +1,102 @@
+<h1 mat-dialog-title>{{ dialogTitle }}</h1>
+<form [formGroup]="userCreateForm" (ngSubmit)="onSubmit()">
+  <div mat-dialog-content>
+    <div class="flex flex-col">
+      <div id="input" class="flex flex-col w-full my-2">
+        <label for="firstName" class="text-gray-500 mb-2">Primeiro Nome</label>
+        <input
+          formControlName="firstName"
+          type="text"
+          id="firstName"
+          name="firstName"
+          placeholder="John"
+          class="appearance-none border-2 border-gray-100 rounded-md px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
+        />
+
+        @if (userCreateForm.controls['firstName'].errors) { @if (
+        userCreateForm.controls['firstName'].errors['required'] &&
+        userCreateForm.controls['firstName'].dirty ) {
+        <p class="text-red-500">Primeiro Nome</p>
+        } }
+      </div>
+
+      <div id="input" class="flex flex-col w-full my-2">
+        <label for="lastName" class="text-gray-500 mb-2">Segundo Nome</label>
+        <input
+          formControlName="lastName"
+          type="text"
+          id="lastName"
+          name="lastName"
+          placeholder="Ex. Reunião de Negócios"
+          class="appearance-none border-2 border-gray-100 rounded-md px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
+        />
+        @if ( userCreateForm.controls['lastName'].errors &&
+        userCreateForm.controls['lastName'].dirty ) { @if (
+        userCreateForm.controls['lastName'].errors['required'] ) {
+        <p class="text-red-500">Segundo Nome</p>
+        } }
+      </div>
+
+      <div id="input" class="flex flex-col w-full my-2">
+        <label for="email" class="text-gray-500 mb-2">Email</label>
+        <input
+          formControlName="email"
+          type="text"
+          id="email"
+          name="email"
+          placeholder="Ex. johnrambo@gmail.com"
+          class="appearance-none border-2 border-gray-100 rounded-md px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
+        />
+        @if ( userCreateForm.controls['email'].errors &&
+        userCreateForm.controls['email'].dirty ) { @if (
+        userCreateForm.controls['email'].errors['required'] ) {
+        <p class="text-red-500">Cor</p>
+        } }
+      </div>
+
+      @if (!isEdit) {
+      <div id="input" class="flex flex-col w-full my-2">
+        <label for="password" class="text-gray-500 mb-2">Senha</label>
+        <input
+          formControlName="password"
+          type="string"
+          id="password"
+          name="password"
+          placeholder="Ex. C#DRF16*!#@"
+          class="appearance-none border-2 border-gray-100 rounded-md px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
+        />
+        @if ( userCreateForm.controls['password'].errors &&
+        userCreateForm.controls['password'].dirty ) { @if (
+        userCreateForm.controls['password'].errors['required'] ) {
+        <p class="text-red-500">Senha</p>
+        } }
+      </div>
+      }
+    </div>
+  </div>
+  <div mat-dialog-actions align="end">
+    <div class="grid grid-flow-col auto-cols-max">
+      <div>
+        <button
+          type="button"
+          class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-yellow-500 text-white hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+          (click)="onReset()"
+        >
+          Limpar
+        </button>
+      </div>
+      <div>
+        <button
+          [disabled]="userCreateForm.invalid"
+          type="submit"
+          [ngClass]="{
+            'disabled:opacity-75': userCreateForm.invalid
+          }"
+          class="py-3 ml-2 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+        >
+          Salvar
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

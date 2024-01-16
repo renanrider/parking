@@ -1,0 +1,21 @@
+<a class="grid cursor-pointer h-full" routerLink="{{ link }}">
+  <div
+    [style.background-color]="backgroundColor"
+    [style.borderColor]="colorService.darkenColor(backgroundColor!, 0.2)"
+    class="flex flex-col sm:flex-row lg:inline-flex items-center justify-start p-3 border-b-4 active:border-b-0 active:translate-y-0.5 rounded-md shadow-none overflow-hidden font-medium group"
+  >
+    <div
+      class="flex justify-center items-center w-14 h-14 bg-white rounded-full"
+    >
+      <i
+        [style.color]="backgroundColor"
+        [ngClass]="iconColor ? iconColor : ''"
+        class="{{ icon }} text-2xl"
+      ></i>
+    </div>
+
+    <h2 class="text-base m-2 text-left text-white sm:w-40 lg:w-48">
+      {{ title }}
+    </h2>
+  </div>
+</a>

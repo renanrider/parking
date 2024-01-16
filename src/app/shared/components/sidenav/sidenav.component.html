@@ -1,0 +1,65 @@
+<ul
+  class="flex flex-col h-full"
+  [ngClass]="collapsed ? 'items-center' : 'items-start'"
+>
+  <li class="mb-5">
+    <button
+      data-testid="toggle-menu-button"
+      (click)="toggleCollapse()"
+      class="flex items-center text-xl text-white"
+    >
+      <i
+        data-testid="toggle-menu-icon"
+        class="fa-solid text-2xl text-center w-7 h-7"
+        [ngClass]="collapsed ? 'fa-bars' : 'fa-close'"
+      ></i>
+      @if (!collapsed) {
+      <img
+        ngSrc="assets/logo-white.webp"
+        class="ml-2"
+        width="120"
+        height="120"
+        alt="logo"
+      />
+      }
+    </button>
+  </li>
+  @for (data of navData; track data) {
+  <li>
+    <a
+      class="flex items-center my-1 text-base text-slate-300"
+      [routerLink]="[data.routerLink]"
+    >
+      <i
+        class="text-xl text-center w-7 h-7"
+        [ngClass]="data.icon"
+        routerLinkActive="text-white"
+        [routerLinkActiveOptions]="{ exact: false }"
+      ></i>
+      @if (!collapsed) {
+      <span
+        class="ml-2"
+        routerLinkActive="text-white"
+        [routerLinkActiveOptions]="{ exact: false }"
+        >{{ data.label }}</span
+      >
+      }
+    </a>
+  </li>
+  }
+
+  <li class="my-1 mt-auto">
+    <button
+      (click)="signOut()"
+      data-testid="button-signOut"
+      class="flex items-center text-base text-white"
+    >
+      <i
+        class="fa-solid fa-arrow-right-from-bracket rotate-180 text-xl text-center w-7 h-7"
+      ></i>
+      @if (!collapsed) {
+      <span class="ml-2">Sair</span>
+      }
+    </button>
+  </li>
+</ul>

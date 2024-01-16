@@ -1,0 +1,89 @@
+<app-header
+  title="Olá, {{ name }} "
+  description="Bem-vindo de volta."
+></app-header>
+
+<div class="w-full items-center flex flex-col my-4">
+  <form class="w-full">
+    <mat-form-field class="w-full">
+      <mat-label>Insira a placa</mat-label>
+      <input
+        type="text"
+        placeholder="Insira a placa"
+        aria-label="Insira a placa"
+        matInput
+        [formControl]="control"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option
+          (onSelectionChange)="selectedVehicle(option)"
+          *ngFor="let option of filteredOptions | async"
+          [value]="option.plate"
+        >
+          {{ option.plate }} - {{ option.brand }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+
+  @if (vehicle.id !== -1) {
+
+  <div
+    [style.border-color]="'#cfcfcf'"
+    class="flex flex-col justify-center p-3 rounded-md shadow-none overflow-hidden font-medium group border border-solid border-b-4 h-full w-full"
+  >
+    <div class="flex flex-row">
+      <h2 class="text-2xl font-bold text-slate-600">{{ vehicle.plate }}</h2>
+
+      <h3 class="text-2xl text-center lg:text-left ml-2 text-slate-500">
+        | {{ vehicle.brand }}
+      </h3>
+
+      <h3 class="text-2xl text-center lg:text-left ml-2 text-slate-500">
+        | {{ vehicle.model }}
+      </h3>
+
+      <h3 class="text-2xl text-center lg:text-left ml-2 text-slate-500">
+        | {{ vehicle.color }}
+      </h3>
+
+      @if (showEntryButton) {
+      <button
+        (click)="createEntrance(vehicle)"
+        class="py-3 ml-2 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 transition-all text-sm"
+        [ngClass]="{
+          'disabled:opacity-75': false
+        }"
+      >
+        Entrada
+      </button>
+      } @else {
+      <button
+        (click)="createExit(parkingData.id)"
+        class="py-3 ml-2 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 transition-all text-sm"
+        [ngClass]="{
+          'disabled:opacity-75': false
+        }"
+      >
+        Saída
+      </button>
+      }
+    </div>
+
+    <div class="flex flex-col">
+      <h3 class="text-2xl text-left text-slate-500">
+        Entrada:
+        <span class="text-slate-600 font-bold">{{
+          parkingData.entryTime
+        }}</span>
+      </h3>
+      <h3 class="text-2xl text-left text-slate-500">
+        Saída:
+        <span class="text-slate-600 font-bold">{{ parkingData.exitTime }}</span>
+      </h3>
+    </div>
+  </div>
+
+  }
+</div>
