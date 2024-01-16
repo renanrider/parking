@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from './dashboard.service';
+import { EntryExitData } from './interfaces/entry-exit-data.interface';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,9 +9,9 @@ import { DashboardService } from './dashboard.service';
 })
 export class DashboardComponent implements OnInit {
   name: string | undefined;
-  activeStudents = 0;
-  temporaryStudents = 0;
-  units = 0;
+  data: EntryExitData | undefined;
+  displayedColumns: string[] = ['id', 'entryTime', 'exitTime'];
+  dataSource: EntryExitData[] = [];
 
   constructor(private dashboardService: DashboardService) {}
 
@@ -25,26 +26,12 @@ export class DashboardComponent implements OnInit {
   }
 
   private loadData() {
-    this.loadActiveStudentsCount();
-    this.loadTemporaryStudentsCount();
-    this.loadUnitsCount();
+    this.loadEntryExit();
   }
 
-  private loadActiveStudentsCount() {
-    this.dashboardService.getActiveStudentsCount().subscribe((result) => {
-      this.activeStudents = result;
-    });
-  }
-
-  private loadTemporaryStudentsCount() {
-    this.dashboardService.getTemporaryStudentsCount().subscribe((result) => {
-      this.temporaryStudents = result;
-    });
-  }
-
-  private loadUnitsCount() {
-    this.dashboardService.getUnitsCount().subscribe((result) => {
-      this.units = result;
+  private loadEntryExit() {
+    this.dashboardService.loadEntryExit().subscribe((entryExitData) => {
+      this.dataSource = entryExitData;
     });
   }
 }
