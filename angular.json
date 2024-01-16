@@ -32,13 +32,8 @@
                 "output": "/assets/"
               }
             ],
-            "styles": [
-              "node_modules/intro.js/introjs.css",
-              "node_modules/@videogular/ngx-videogular/fonts/videogular.css",
-              "src/styles.scss",
-              "src/custom-theme.scss"
-            ],
-            "scripts": ["node_modules/intro.js/intro.js"]
+            "styles": ["src/styles.scss", "src/custom-theme.scss"],
+            "scripts": []
           },
           "configurations": {
             "production": {
