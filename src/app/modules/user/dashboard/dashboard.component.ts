@@ -85,9 +85,9 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  createEntrance(vehicle: Vehicle): void {
+  createEntry(vehicle: Vehicle): void {
     this.dashboardService.createEntrance(vehicle.id).subscribe((parking) => {
-      console.log(vehicle);
+      this.parkingData.id = parking.id;
       this.showEntryButton = false;
       this.parkingData.entryTime = moment(parking.entryTime).format(
         'DD-MM-YYYY HH:mm:ss'
